@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "expense-manager-78732": {
+      "hosting": {
+        "app": [
+          "expense-manager-78732"
+        ]
+      }
+    }
+  }
+}

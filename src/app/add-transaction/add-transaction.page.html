@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="transactionForm" (ngSubmit)="submitForm()" novalidate>
+    
+    <ion-item lines="full">
+      <ion-label position="floating">Transaction Date</ion-label>
+      <ion-datetime  (ionChange)="getDate($event)" formControlName="transactionDate"></ion-datetime>
+    </ion-item>
+    <div *ngIf="getControl.transactionDate.touched && getControl.transactionDate.invalid" class="text-danger">
+      <div *ngIf="getControl.transactionDate.errors.required">Transaction date is required.</div>
+    </div>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input type="number" formControlName="amount"></ion-input>
+    </ion-item>
+    <div *ngIf="getControl.amount.touched && getControl.amount.invalid" class="text-danger">
+      <div *ngIf="getControl.amount.errors.required">Amount is required.</div>
+    </div>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Category</ion-label>
+      <ion-select interface="popover" formControlName="category">
+        <ion-select-option value="Food and Dining">Food and Dining</ion-select-option>
+        <ion-select-option value="Shopping">Shopping</ion-select-option>
+        <ion-select-option value="Travelling">Travelling</ion-select-option>
+        <ion-select-option value="Entertainment">Entertainment</ion-select-option>
+        <ion-select-option value="Medical">Medical</ion-select-option>
+        <ion-select-option value="Personal Care">Personal Care</ion-select-option>
+        <ion-select-option value="snes">Education</ion-select-option>
+        <ion-select-option value="Education">Bills and Utilities</ion-select-option>
+        <ion-select-option value="Investments">Investments</ion-select-option>
+        <ion-select-option value="Rent">Rent</ion-select-option>
+        <ion-select-option value="Taxes">Taxes</ion-select-option>
+        <ion-select-option value="Insurance">Insurance</ion-select-option>
+        <ion-select-option value="Gifts and Donation">Gifts and Donation</ion-select-option>
+        <ion-select-option value="Others">Others</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngIf="getControl.category.touched && getControl.category.invalid" class="text-danger">
+      <div *ngIf="getControl.category.errors.required">Category is required.</div>
+    </div>
+    
+    <ion-item lines="full">
+      <ion-label position="floating">Description</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" [disabled]="transactionForm.invalid">Add Transaction</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+</ion-content>

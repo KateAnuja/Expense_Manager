@@ -8,8 +8,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'add-transaction',
     pathMatch: 'full'
+  },
+  {
+    path: 'add-transaction',
+    loadChildren: () => import('./add-transaction/add-transaction.module').then( m => m.AddTransactionPageModule)
   },
 ];
 
