@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Add Transaction</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +12,7 @@
     
     <ion-item lines="full">
       <ion-label position="floating">Transaction Date</ion-label>
-      <ion-datetime  (ionChange)="getDate($event)" formControlName="transactionDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" (ionChange)="getDate($event)" formControlName="transactionDate"></ion-datetime>
     </ion-item>
     <div *ngIf="getControl.transactionDate.touched && getControl.transactionDate.invalid" class="text-danger">
       <div *ngIf="getControl.transactionDate.errors.required">Transaction date is required.</div>

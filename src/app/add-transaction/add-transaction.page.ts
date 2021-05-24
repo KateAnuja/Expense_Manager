@@ -34,6 +34,7 @@ export class AddTransactionPage implements OnInit {
 
   getDate(event){
     let date = new Date(event.target.value).toISOString().substring(0, 10);
+    // let date = new Date(event.target.value).getDate()+"/"+new Date(event.traget.value).getMonth()+"/"+new Date(event.target.value).getFullYear();
     this.transactionForm.get('transactionDate').setValue(date, {
        onlyself: true
     })

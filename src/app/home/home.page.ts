@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Transaction } from '../models/transaction';
 import { TransactionService } from '../services/transaction.service';
 
@@ -11,6 +12,7 @@ export class HomePage {
   transactionArray : any= [];
   constructor(
     private transactionService : TransactionService,
+    private router : Router,
   ) {}
 
   ngOnInit(){
@@ -28,6 +30,10 @@ export class HomePage {
      })
    })
     console.log(this.transactionArray);
+  }
+
+  goToAddTransactionPage(){
+    this.router.navigateByUrl('add-transaction');
   }
 
 }
