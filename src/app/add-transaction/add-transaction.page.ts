@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { TransactionService } from '../services/transaction.service';
 
 @Component({
@@ -13,6 +15,8 @@ export class AddTransactionPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private transactionService : TransactionService,
+    private alertController : AlertController,
+    private router : Router,
   ) { }
 
   ngOnInit() {
@@ -48,8 +52,22 @@ export class AddTransactionPage implements OnInit {
     } else {
       console.log(this.transactionForm.value);
       this.transactionService.addTransaction(this.transactionForm.value)
-      .then(()=>{
+      .then(async()=>{
         this.transactionForm.reset();
+        const alert = await this.alertController.create({
+          header: 'Success',
+          message: 'Transaction Added Successfully.',
+          buttons: [
+            {
+                text: 'OK',
+                cssClass : "alert-btn-danger",
+                handler: async() => {
+                  this.router.navigateByUrl('home');
+                }
+            },
+          ]
+        });
+        alert.present();
       })
     }
   }

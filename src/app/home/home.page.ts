@@ -30,6 +30,11 @@ export class HomePage {
      })
    })
     console.log(this.transactionArray);
+    this.transactionArray.sort(function compare(a, b) {
+      var dateA = new Date(a.transactionDate).getUTCDate();
+      var dateB = new Date(b.transactionDate).getUTCDate();
+      return dateA - dateB;
+    });
   }
 
   goToAddTransactionPage(){
