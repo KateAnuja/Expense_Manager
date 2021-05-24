@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'add-transaction',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
